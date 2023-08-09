@@ -17,6 +17,7 @@
   "license": "MIT License",
   "type": "module",
   "devDependencies": {
+    "@league-of-foundry-developers/foundry-vtt-types": "^9.280.0",
     "concurrently": "^8.2.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.9"
