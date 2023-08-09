@@ -4,11 +4,20 @@
   "description": "Utility for WFRP4e GM",
   "main": "index.js",
   "scripts": {
+    "dev": "vite",
+    "watch": "vite build -w",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "FoundryVTT"
   ],
   "author": "7h3m0n",
-  "license": "MIT License"
+  "license": "MIT License",
+  "type": "module",
+  "devDependencies": {
+    "typescript": "^5.0.2",
+    "vite": "^4.4.9"
+  }
 }
