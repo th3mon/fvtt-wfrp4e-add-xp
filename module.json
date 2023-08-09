@@ -1,0 +1,16 @@
+{
+  "id": "fvtt-wfrp4e-add-xp",
+  "title": "Add XP Macro (WFRP4e)",
+  "description": "Utility for WFRP4e GM",
+  "version": "0.0.1",
+  "esmodules": "fvtt-wfrp4e-add-xp.mjs",
+  "authors": [
+    {
+      "id": "7h3m0n",
+      "name": "7h3m0n",
+      "discord": "th3mon",
+      "email": "7h3m0n@gmail.com",
+      "url": "https://github.com/th3mon/"
+    }
+  ]
+}
