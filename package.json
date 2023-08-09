@@ -1,0 +1,14 @@
+{
+  "name": "fvtt-wfrp4e-add-xp",
+  "version": "1.0.0",
+  "description": "Utility for WFRP4e GM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "FoundryVTT"
+  ],
+  "author": "7h3m0n",
+  "license": "MIT License"
+}
