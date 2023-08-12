@@ -1,7 +1,10 @@
 import type { UserConfig } from 'vite';
+import path from 'path';
+
 const config: UserConfig = {
-  publicDir: 'public',
+  root: 'src/',
   base: '/modules/fvtt-wfrp4e-add-xp/',
+  publicDir: path.resolve(__dirname, 'public'),
   server: {
     port: 30001,
     open: true,
@@ -14,12 +17,12 @@ const config: UserConfig = {
     },
   },
   build: {
-    outDir: 'dist',
+    outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
     sourcemap: true,
     lib: {
       name: 'fvtt-wfrp4e-add-xp',
-      entry: 'src/fvtt-wfrp4e-add-xp.ts',
+      entry: path.resolve(__dirname, 'src/fvtt-wfrp4e-add-xp.ts'),
       formats: ['es'],
       fileName: 'fvtt-wfrp4e-add-xp',
     },

@@ -3,4 +3,4 @@
 // in dev, foundry loads index.js, this file, which loads lancer.ts
 
 window.global = window;
-import * as LANCER from './fvtt-wfrp4e-add-xp.ts';
+import './fvtt-wfrp4e-add-xp.ts';
