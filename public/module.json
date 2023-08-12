@@ -12,5 +12,18 @@
       "email": "7h3m0n@gmail.com",
       "url": "https://github.com/th3mon/"
     }
+  ],
+  "styles": ["style.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "pl",
+      "name": "Polski",
+      "path": "lang/pl.json"
+    }
   ]
 }

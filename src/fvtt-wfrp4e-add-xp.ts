@@ -1,3 +1,10 @@
+import { AdHoc, XPData } from './ad-hoc';
+import './fvtt-wfrp4e-add-xp.scss';
+
+const addXP = ({ xp, reason }: XPData) => {
+  console.log('Add XP', { xp, reason });
+};
+
 console.log('Hello World! This code runs immediately when the file is loaded.');
 
 Hooks.on('init', function () {
@@ -7,6 +14,18 @@ Hooks.on('init', function () {
 });
 
 Hooks.on('ready', function () {
+  const adHoc = new AdHoc();
+  const d = new Dialog({
+    title: adHoc.title,
+    content: adHoc.content,
+    buttons: adHoc.buttons,
+    render: adHoc.onRender,
+    close: adHoc.onClose,
+  });
+
+  adHoc.on('ok', (data: XPData) => addXP(data));
+  d.render(true);
+
   console.log(
     'This code runs once core initialization is ready and game data is available.'
   );
