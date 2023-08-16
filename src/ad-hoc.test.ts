@@ -1,8 +1,8 @@
 import { describe, expect, test } from 'vitest';
-import { adHoc } from './ad-hoc';
+import { AdHoc } from './ad-hoc';
 
 describe('adHoc()', () => {
   test('should exist', () => {
-    expect(adHoc).toBeDefined();
+    expect(AdHoc).toBeDefined();
   });
 });
