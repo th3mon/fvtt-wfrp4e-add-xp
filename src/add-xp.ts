@@ -1,9 +1,9 @@
+import { arePCTokens } from './are-pc-tokens';
+
 async function main() {
   const selectedTokens = canvas?.tokens?.controlled;
-  const arePCTokens = (tokens) =>
-    tokens?.every((token) => token.actor?.type === 'character');
 
-  if (!selectedTokens?.length && arePCTokens(selected)) {
+  if (!selectedTokens?.length && arePCTokens(selectedTokens)) {
     ui.notifications?.error('Please select player character token');
 
     return;
