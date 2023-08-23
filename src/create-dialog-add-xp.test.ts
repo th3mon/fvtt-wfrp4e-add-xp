@@ -1,4 +1,4 @@
-import { describe, it, expect, afterEach, vi, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { createDialogAddXP } from './create-dialog-add-xp';
 
 describe('createDialogAddXP', () => {
@@ -13,10 +13,6 @@ describe('createDialogAddXP', () => {
     globalThis.game = {
       i18n,
     };
-  });
-
-  afterEach(() => {
-    vi.restoreAllMocks();
   });
 
   it('should exist', () => {
