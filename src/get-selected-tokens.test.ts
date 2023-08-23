@@ -1,7 +1,17 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { getSelectedTokens } from './get-selected-tokens';
 
 describe('getTokens', () => {
+  beforeAll(() => {
+    const i18n = {
+      localize: (key: string) => key,
+    };
+    // @ts-expect-error type
+    globalThis.game = {
+      i18n,
+    };
+  });
+
   it('should exist', () => {
     expect(getSelectedTokens).toBeDefined();
   });
