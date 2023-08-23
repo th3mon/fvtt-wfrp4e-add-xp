@@ -2,19 +2,21 @@ export const createDialogAddXP = (
   add: () => void,
   cancel: () => void
 ): Dialog => {
+  // TODO: Move texts into lang files
+  const content = `
+    <div class="form-group">
+    <label for="xp">XP</label>
+    <input type="number" id="xp" name="xp">
+    </div>
+    <div class="form-group">
+    <label for="reason">Reason</label>
+    <input type="text" id="reason" name="reason">
+    </div>
+  `;
+
   return new Dialog({
     title: 'Add XP',
-    // TODO: Move texts into lang files
-    content: `
-        <div class="form-group">
-        <label for="xp">XP</label>
-        <input type="number" id="xp" name="xp">
-        </div>
-        <div class="form-group">
-        <label for="reason">Reason</label>
-        <input type="text" id="reason" name="reason">
-        </div>
-      `,
+    content,
     buttons: {
       add: {
         icon: '<i class="fas fa-check"></i>',
