@@ -1,5 +1,10 @@
 {
   "wfrp4e.add-xp": {
+    "message": {
+      "error": {
+        "select.player.token": "Wybierz token Osoby Grającej"
+      }
+    },
     "modal": {
       "title": "Dodaj PD",
       "content": {
@@ -13,6 +18,9 @@
         "cancel": {
           "label": "Anuluj"
         }
+      },
+      "value.defaults": {
+        "reason": "Po prostu otrzymano PD"
       }
     }
   }

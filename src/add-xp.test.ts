@@ -1,7 +1,17 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { addXP } from './add-xp';
 
 describe('addXP', () => {
+  beforeAll(() => {
+    const i18n = {
+      localize: (_: string) => 'Just gaining some XP',
+    };
+    // @ts-expect-error type
+    globalThis.game = {
+      i18n,
+    };
+  });
+
   it('should exist', () => {
     expect(addXP).toBeDefined();
   });

@@ -1,7 +1,7 @@
 export const addXP = (selectedTokens: Token[]): void => {
   const defaults = {
     XP: 20,
-    reason: 'Just gaining some XP',
+    reason: game.i18n.localize('wfrp4e.add-xp.modal.value.defaults.reason'),
   };
 
   const XPInput: HTMLInputElement = document.getElementById(

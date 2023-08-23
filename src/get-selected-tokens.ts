@@ -7,7 +7,7 @@ export function getSelectedTokens(canvas: Canvas | undefined): {
   const selectedTokens = canvas?.tokens?.controlled || [];
   const errorMessage =
     !selectedTokens?.length && arePCTokens(selectedTokens)
-      ? 'Please select player character token'
+      ? game.i18n.localize('wfrp4e.add-xp.message.error.select.player.token')
       : '';
 
   return { selectedTokens, errorMessage };
