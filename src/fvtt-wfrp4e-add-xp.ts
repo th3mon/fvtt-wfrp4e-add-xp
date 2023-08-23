@@ -1,5 +1,5 @@
 import { AdHoc, XPData } from './ad-hoc';
-import { main } from './add-xp';
+import { main } from './main';
 import './fvtt-wfrp4e-add-xp.scss';
 
 const addXP = ({ xp, reason }: XPData) => {
