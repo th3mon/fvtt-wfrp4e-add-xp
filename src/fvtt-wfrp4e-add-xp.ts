@@ -1,4 +1,5 @@
 import { AdHoc, XPData } from './ad-hoc';
+import { main } from './add-xp';
 import './fvtt-wfrp4e-add-xp.scss';
 
 const addXP = ({ xp, reason }: XPData) => {
@@ -14,17 +15,7 @@ Hooks.on('init', function () {
 });
 
 Hooks.on('ready', function () {
-  const adHoc = new AdHoc();
-  const d = new Dialog({
-    title: adHoc.title,
-    content: adHoc.content,
-    buttons: adHoc.buttons,
-    render: adHoc.onRender,
-    close: adHoc.onClose,
-  });
-
-  adHoc.on('ok', (data: XPData) => addXP(data));
-  d.render(true);
+  globalThis.wfrpAddXp = main;
 
   console.log(
     'This code runs once core initialization is ready and game data is available.'

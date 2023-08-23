@@ -1,3 +1,4 @@
+import { createDialogAddXP } from './create-dialog-add-xp';
 import { getSelectedTokens } from './get-selected-tokens';
 
 export async function main() {
@@ -9,33 +10,11 @@ export async function main() {
     return;
   }
 
-  const d = new Dialog({
-    title: 'Add XP',
-    content: `
-      <div class="form-group">
-        <label for="xp">XP</label>
-        <input type="number" id="xp" name="xp">
-      </div>
-      <div class="form-group">
-        <label for="reason">Reason</label>
-        <input type="text" id="reason" name="reason">
-      </div>
-    `,
-    buttons: {
-      add: {
-        icon: '<i class="fas fa-check"></i>',
-        label: game.i18n.localize('wfrp4e.add-xp.modal.button.ok.label'),
-        callback: () => addXP(selectedTokens),
-      },
-      cancel: {
-        icon: '<i class="fas fa-times"></i>',
-        label: game.i18n.localize('wfrp4e.add-xp.modal.button.cancel.label'),
-        callback: () => {},
-      },
-    },
-    default: 'add',
-  });
-  d.render(true);
+  const dialog = createDialogAddXP(
+    () => addXP(selectedTokens),
+    () => {}
+  );
+  dialog.render(true);
 }
 
 function addXP(selectedTokens) {
