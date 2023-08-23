@@ -17,9 +17,3 @@ export async function main() {
   );
   dialog.render(true);
 }
-
-// try {
-//   await main();
-// } catch (error) {
-//   console.error(error);
-// }
