@@ -11,9 +11,9 @@ export async function main() {
     return;
   }
 
-  const dialog = createDialogAddXP(
-    () => addXP(selectedTokens),
-    () => {}
-  );
+  const addXPCallback = () => addXP(selectedTokens);
+  const cancelCallback = () => {};
+  const dialog = createDialogAddXP(addXPCallback, cancelCallback);
+
   dialog.render(true);
 }
