@@ -1,12 +1,14 @@
 {
   "wfrp4e.add-xp": {
     "modal": {
-      "add-xp": {
-        "title": "Add XP"
+      "title": "Add XP",
+      "content": {
+        "xp": "XP",
+        "reason": "Reason"
       },
       "button": {
         "ok": {
-          "label": "OK"
+          "label": "Add"
         },
         "cancel": {
           "label": "Cancel"
