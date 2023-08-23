@@ -1,3 +1,4 @@
+import { addXP } from './add-xp';
 import { createDialogAddXP } from './create-dialog-add-xp';
 import { getSelectedTokens } from './get-selected-tokens';
 
@@ -15,39 +16,6 @@ export async function main() {
     () => {}
   );
   dialog.render(true);
-}
-
-// TODO: Move addXP to deparate file
-// TODO: Add type details
-function addXP(selectedTokens: Token[]) {
-  // INFO:
-  // Get XP and Reason
-  const XP = parseInt(document.getElementById('xp')?.value);
-  const reason = document.getElementById('reason')?.value;
-
-  console.log({ XP, reason });
-
-  // INFO:
-  // add XP
-  // 1. Get PC
-  console.log(selectedTokens);
-
-  // TODO: name the function and move to deparate file
-  selectedTokens.forEach((token) => {
-    // INFO:
-    // 2. Get XPTotal and current XP
-    // 3. Add current XP to XP Total
-    const XPTotal = token.actor?.details.experience.total;
-    const newXPTotal = XPTotal + XP;
-    const currentXP = token.actor?.details.experience.current;
-    const newCurrentXP = currentXP + XP;
-
-    console.log({ XPTotal, newXPTotal, currentXP, newCurrentXP });
-
-    // INFO:
-    // 4. Update actor -> pc.actor.awardExp(XP, reason)
-    token.actor?.awardExp(XP, reason);
-  });
 }
 
 // try {
