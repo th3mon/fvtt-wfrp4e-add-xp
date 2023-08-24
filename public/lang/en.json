@@ -1,0 +1,27 @@
+{
+  "wfrp4e.add-xp": {
+    "message": {
+      "error": {
+        "select.player.token": "Please select Player Character token"
+      }
+    },
+    "modal": {
+      "title": "Add XP",
+      "content": {
+        "xp": "XP",
+        "reason": "Reason"
+      },
+      "button": {
+        "ok": {
+          "label": "Add"
+        },
+        "cancel": {
+          "label": "Cancel"
+        }
+      },
+      "value.defaults": {
+        "reason": "Just gaining some XP"
+      }
+    }
+  }
+}

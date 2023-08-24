@@ -28,3 +28,6 @@ next-env.d.ts
 
 # Prod
 /dist
+
+# Vitest
+/src/node_modules

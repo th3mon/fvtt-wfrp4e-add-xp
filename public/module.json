@@ -12,5 +12,46 @@
       "email": "7h3m0n@gmail.com",
       "url": "https://github.com/th3mon/"
     }
+  ],
+  "styles": ["style.css"],
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10",
+    "maximum": "11"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "wfrp4e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "6.5.7",
+          "verified": "6.5.7",
+          "maximum": "6.x"
+        }
+      }
+    ]
+  },
+  "packs": [
+    {
+      "name": "wfrp4e-add-xp-macros",
+      "label": "Add XP Macros",
+      "path": "./packs/wfrp4e-add-xp-macros.db",
+      "type": "Macro",
+      "module": "fvtt-wfrp4e-add-xp",
+      "system": "wfrp4e"
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "pl",
+      "name": "Polski",
+      "path": "lang/pl.json"
+    }
   ]
 }
