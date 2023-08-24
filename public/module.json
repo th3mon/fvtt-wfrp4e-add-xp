@@ -2,7 +2,7 @@
   "id": "fvtt-wfrp4e-add-xp",
   "title": "Add XP Macro (WFRP4e)",
   "description": "Utility for WFRP4e GM",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "esmodules": "fvtt-wfrp4e-add-xp.js",
   "authors": [
     {
