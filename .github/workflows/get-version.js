@@ -1,2 +1,2 @@
 const fs = require('fs');
-console.log(JSON.parse(fs.readFileSync('./module.json', 'utf-8')).version);
+console.log(JSON.parse(fs.readFileSync('./dist/module.json', 'utf-8')).version);
