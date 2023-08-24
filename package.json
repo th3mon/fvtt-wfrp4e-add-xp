@@ -7,6 +7,7 @@
     "dev": "concurrently \"vite\" \"npm:watch\" -k",
     "watch": "vite build -w",
     "build": "tsc && vite build",
+    "build:ci": "vite build",
     "preview": "vite preview",
     "test": "vitest"
   },
