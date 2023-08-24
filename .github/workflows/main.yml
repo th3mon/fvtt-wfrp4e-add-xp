@@ -3,10 +3,7 @@ name: Module Builder
 on:
   push:
     branches:
-      - '*'
-      - '!main'
-      - '!develop'
-      - '!feature/*'
+      - 'main'
 
 jobs:
   build:
