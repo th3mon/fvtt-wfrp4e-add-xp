@@ -2,10 +2,10 @@
   "id": "fvtt-wfrp4e-add-xp",
   "title": "Add XP Macro (WFRP4e)",
   "description": "Utility for WFRP4e GM",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "url": "https://github.com/th3mon/fvtt-wfrp4e-add-xp/",
-  "manifest": "https://github.com/th3mon/fvtt-wfrp4e-add-xp/releases/download/1.0.3/module.json",
-  "download": "https://github.com/th3mon/fvtt-wfrp4e-add-xp/releases/download/1.0.3/module.zip",
+  "manifest": "https://github.com/th3mon/fvtt-wfrp4e-add-xp/releases/download/1.0.4/module.json",
+  "download": "https://github.com/th3mon/fvtt-wfrp4e-add-xp/releases/download/1.0.4/module.zip",
   "esmodules": "fvtt-wfrp4e-add-xp.js",
   "authors": [
     {
@@ -19,7 +19,7 @@
   "styles": ["style.css"],
   "compatibility": {
     "minimum": "10",
-    "verified": "10",
+    "verified": "11",
     "maximum": "11"
   },
   "relationships": {
@@ -29,8 +29,8 @@
         "type": "system",
         "compatibility": {
           "minimum": "6.5.7",
-          "verified": "6.5.7",
-          "maximum": "6.x"
+          "verified": "7.0.2",
+          "maximum": "7.x"
         }
       }
     ]
