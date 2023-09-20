@@ -1,6 +1,6 @@
 {
   "name": "fvtt-wfrp4e-add-xp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Utility for WFRP4e GM",
   "main": "index.js",
   "scripts": {
