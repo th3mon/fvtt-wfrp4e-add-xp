@@ -19,7 +19,7 @@
   "styles": ["style.css"],
   "compatibility": {
     "minimum": "10",
-    "verified": "10",
+    "verified": "11",
     "maximum": "11"
   },
   "relationships": {
@@ -30,7 +30,7 @@
         "compatibility": {
           "minimum": "6.5.7",
           "verified": "6.5.7",
-          "maximum": "6.x"
+          "maximum": "7.x"
         }
       }
     ]
