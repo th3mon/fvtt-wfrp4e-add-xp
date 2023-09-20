@@ -29,7 +29,7 @@
         "type": "system",
         "compatibility": {
           "minimum": "6.5.7",
-          "verified": "6.5.7",
+          "verified": "7.0.2",
           "maximum": "7.x"
         }
       }
