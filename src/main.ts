@@ -2,7 +2,7 @@ import { addXP } from './add-xp';
 import { createDialogAddXP } from './create-dialog-add-xp';
 import { getSelectedTokens } from './get-selected-tokens';
 
-export async function main() {
+export async function adHocAddXP() {
   const { selectedTokens, errorMessage } = getSelectedTokens(canvas);
 
   if (errorMessage) {
