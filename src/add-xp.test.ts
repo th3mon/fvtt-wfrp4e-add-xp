@@ -32,6 +32,18 @@ describe('addXP', () => {
 
         return element as HTMLInputElement;
       },
+
+      querySelector: (selector: string) => {
+        const element = {
+          value: '',
+        };
+
+        if (selector === 'input[name="xp"]:checked') {
+          element.value = '100';
+        }
+
+        return element as HTMLInputElement;
+      },
     };
 
     // @ts-expect-error type
@@ -66,6 +78,18 @@ describe('addXP', () => {
           element.value = '';
         } else if (id === 'reason') {
           element.value = '';
+        }
+
+        return element as HTMLInputElement;
+      },
+
+      querySelector: (selector: string) => {
+        const element = {
+          value: '',
+        };
+
+        if (selector === 'input[name="xp"]:checked') {
+          element.value = '100';
         }
 
         return element as HTMLInputElement;

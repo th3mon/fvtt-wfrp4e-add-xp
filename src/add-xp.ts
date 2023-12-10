@@ -5,12 +5,15 @@ export const addXP = (selectedTokens: Token[]): void => {
   };
 
   const XPInput: HTMLInputElement = document.getElementById(
-    'xp'
+    'xp',
   ) as HTMLInputElement;
   const XP = parseInt(XPInput?.value) || defaults.XP;
 
+  const value = document.querySelector('input[name="xp"]:checked')?.value;
+  console.log({ value });
+
   const reasonInput: HTMLInputElement = document.getElementById(
-    'reason'
+    'reason',
   ) as HTMLInputElement;
   const reason = reasonInput?.value || defaults.reason;
 

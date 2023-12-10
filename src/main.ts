@@ -1,5 +1,6 @@
 import { addXP } from './add-xp';
 import { createDialogAddXP } from './create-dialog-add-xp';
+import { createDialogAmbitions } from './create-dialog-ambitions';
 import { getSelectedTokens } from './get-selected-tokens';
 
 type XPType = 'ambitions' | 'ad-hoc';
@@ -20,10 +21,10 @@ export async function main(addXPFor: XPType) {
 
   switch (addXPFor) {
     case AddXPType.AdHoc:
-      return adHocAddXP(selectedTokens);
+      return showDialogAdHoc(selectedTokens);
 
     case AddXPType.Ambitions:
-      return ambitionsAddXP();
+      return showDialogAmbitions(selectedTokens);
 
     default:
       // TODO: Create meaningful error message
@@ -31,8 +32,8 @@ export async function main(addXPFor: XPType) {
   }
 }
 
-// TODO: Move adHocAddXP() to the own file
-async function adHocAddXP(selectedTokens: Token[]) {
+// TODO: Move showDialogAdHoc() to the own file
+async function showDialogAdHoc(selectedTokens: Token[]) {
   const addXPCallback = () => addXP(selectedTokens);
   const cancelCallback = () => {};
   const dialog = createDialogAddXP(addXPCallback, cancelCallback);
@@ -40,7 +41,11 @@ async function adHocAddXP(selectedTokens: Token[]) {
   dialog.render(true);
 }
 
-// TODO: Move ambitionsAddXP() to the own file
-async function ambitionsAddXP() {
-  ui.notifications?.info('Ambitions');
+// TODO: Move showDialogAmbitions() to the own file
+async function showDialogAmbitions(selectedTokens: Token[]) {
+  const addXPCallback = () => addXP(selectedTokens);
+  const cancelCallback = () => {};
+  const dialog = createDialogAmbitions(addXPCallback, cancelCallback);
+
+  dialog.render(true);
 }
