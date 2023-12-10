@@ -17,3 +17,7 @@ export async function adHocAddXP() {
 
   dialog.render(true);
 }
+
+export async function ambitionsAddXP() {
+  ui.notifications?.info('Ambitions');
+}
