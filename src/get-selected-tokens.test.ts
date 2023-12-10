@@ -33,11 +33,28 @@ describe('getTokens', () => {
     expect(selectedTokens.length).toBeGreaterThan(0);
   });
 
+  it('should return empty string as error message when tokens is OK', () => {
+    const token = {
+      actor: {
+        type: 'character',
+      },
+    };
+    const canvas = {
+      tokens: {
+        controlled: [token],
+      },
+    };
+
+    const { errorMessage } = getSelectedTokens(canvas as Canvas);
+
+    expect(errorMessage).toBe('');
+  });
+
   it('should not return tokens', () => {
     const canvasWithoutControlledTokens = {};
 
     const { errorMessage } = getSelectedTokens(
-      canvasWithoutControlledTokens as Canvas
+      canvasWithoutControlledTokens as Canvas,
     );
 
     expect(errorMessage).toBeDefined();
