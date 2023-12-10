@@ -1,7 +1,6 @@
-import { adHocAddXP, ambitionsAddXP } from './main';
+import { AddXPType, main } from './main';
 
 export const registerGlobals = () => {
-  globalThis.wfrpAddXp = adHocAddXP;
-  globalThis.adHocAddXP = adHocAddXP;
-  globalThis.ambitionsAddXP = ambitionsAddXP;
+  globalThis.wfrpAddXp = () => main(AddXPType.AdHoc);
+  globalThis.ambitionsAddXP = () => main(AddXPType.Ambitions);
 };

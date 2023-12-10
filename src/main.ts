@@ -2,7 +2,14 @@ import { addXP } from './add-xp';
 import { createDialogAddXP } from './create-dialog-add-xp';
 import { getSelectedTokens } from './get-selected-tokens';
 
-export async function adHocAddXP() {
+type XPType = 'ambitions' | 'ad-hoc';
+
+export enum AddXPType {
+  Ambitions = 'ambitions',
+  AdHoc = 'ad-hoc',
+}
+
+export async function main(addXPFor: XPType) {
   const { selectedTokens, errorMessage } = getSelectedTokens(canvas);
 
   if (errorMessage) {
@@ -11,6 +18,21 @@ export async function adHocAddXP() {
     return;
   }
 
+  switch (addXPFor) {
+    case AddXPType.AdHoc:
+      return adHocAddXP(selectedTokens);
+
+    case AddXPType.Ambitions:
+      return ambitionsAddXP();
+
+    default:
+      // TODO: Create meaningful error message
+      return ui.notifications?.error('Not implemented');
+  }
+}
+
+// TODO: Move adHocAddXP() to the own file
+async function adHocAddXP(selectedTokens: Token[]) {
   const addXPCallback = () => addXP(selectedTokens);
   const cancelCallback = () => {};
   const dialog = createDialogAddXP(addXPCallback, cancelCallback);
@@ -18,6 +40,7 @@ export async function adHocAddXP() {
   dialog.render(true);
 }
 
-export async function ambitionsAddXP() {
+// TODO: Move ambitionsAddXP() to the own file
+async function ambitionsAddXP() {
   ui.notifications?.info('Ambitions');
 }
