@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { addXP } from './add-xp';
+import { addXP, getPersonalAmbitions, hasAmbitions } from './add-xp';
 
 describe('addXP', () => {
   beforeAll(() => {
@@ -220,5 +220,121 @@ describe('addXP', () => {
     const selectedPlayers: Token[] = [token];
 
     addXP(selectedPlayers);
+  });
+
+  it('use personal ambition as short term reason from the character sheet', () => {
+    // @ts-expect-error type
+    globalThis.document = {
+      getElementById: (id: string) => {
+        const element = {
+          value: '',
+        };
+
+        if (id === 'xp') {
+          element.value = '50';
+        } else {
+          element.value = '';
+        }
+
+        return element as HTMLInputElement;
+      },
+    };
+
+    // @ts-expect-error type
+    const token: Token = {
+      actor: {
+        details: {
+          experience: {
+            current: 100,
+            total: 200,
+          },
+          ['personal-ambitions']: {
+            ['short-term']: 'Quest A',
+          },
+        },
+        awardExp: (XP: number, reason: string) => {
+          expect(XP).toBe(50);
+          expect(reason).toBe('Quest A');
+        },
+      },
+    } as Token;
+    const selectedPlayers: Token[] = [token];
+
+    addXP(selectedPlayers);
+  });
+
+  describe('hasAmbitions', () => {
+    it('should return true if the actor has personal ambitions', () => {
+      // @ts-expect-error type
+      globalThis.document = {
+        getElementById: (id: string) => {
+          const element = {
+            value: '',
+          };
+
+          if (id === 'xp') {
+            element.value = '50';
+          } else {
+            element.value = '';
+          }
+
+          return element as HTMLInputElement;
+        },
+      };
+
+      // @ts-expect-error type
+      const selectedPlayer: Token = {
+        actor: {
+          details: {
+            experience: {
+              current: 100,
+              total: 200,
+            },
+            ['personal-ambitions']: {
+              ['short-term']: 'Quest A',
+            },
+          },
+        },
+      } as Token;
+
+      const ambitions = getPersonalAmbitions(selectedPlayer?.actor);
+
+      expect(hasAmbitions(ambitions)).toBe(true);
+    });
+
+    it('should return false if the actor does not have personal ambitions', () => {
+      // @ts-expect-error type
+      globalThis.document = {
+        getElementById: (id: string) => {
+          const element = {
+            value: '',
+          };
+
+          if (id === 'xp') {
+            element.value = '50';
+          } else {
+            element.value = '';
+          }
+
+          return element as HTMLInputElement;
+        },
+      };
+
+      // @ts-expect-error type
+      const selectedPlayer: Token = {
+        actor: {
+          details: {
+            experience: {
+              current: 100,
+              total: 200,
+            },
+          },
+        },
+      } as Token;
+
+      const ambitions = getPersonalAmbitions(selectedPlayer?.actor);
+
+      expect(hasAmbitions(ambitions)).toBe(false);
+    });
   });
 });
