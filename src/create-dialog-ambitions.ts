@@ -2,7 +2,7 @@ export const createDialogAmbitions = (
   add: () => void,
   cancel: () => void,
 ): Dialog => {
-  const title = game.i18n.localize('wfrp4e.add-xp.modal.title');
+  const title = 'Add XP | Ambitions';
   const okLabel = game.i18n.localize('wfrp4e.add-xp.modal.button.ok.label');
   const cancelLabel = game.i18n.localize(
     'wfrp4e.add-xp.modal.button.cancel.label',
