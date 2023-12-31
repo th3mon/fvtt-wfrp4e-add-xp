@@ -93,19 +93,7 @@ describe('addXP', () => {
   it('add short-term Ambition XP to one player', () => {
     // @ts-expect-error type
     globalThis.document = {
-      getElementById: (id: string) => {
-        const element = {
-          value: '',
-        };
-
-        if (id === 'short-term-reason') {
-          element.value = 'Short-term Ambition';
-        } else {
-          return null;
-        }
-
-        return element as HTMLInputElement;
-      },
+      getElementById: () => null,
 
       querySelector: (selector: string) => {
         const element = {
@@ -143,19 +131,7 @@ describe('addXP', () => {
   it('add long-term Ambition XP to one player', () => {
     // @ts-expect-error type
     globalThis.document = {
-      getElementById: (id: string) => {
-        const element = {
-          value: '',
-        };
-
-        if (id === 'long-term-reason') {
-          element.value = 'Long-term Ambition';
-        } else {
-          return null;
-        }
-
-        return element as HTMLInputElement;
-      },
+      getElementById: () => null,
 
       querySelector: (selector: string) => {
         const element = {

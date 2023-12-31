@@ -12,7 +12,6 @@ export const createDialogAmbitions = (
     <div class="form-group">
       <label for="short-term">
         <input type="radio" id="short-term" name="xp" value="50" checked>
-        <input type="hidden" id="short-term-reason" value="Short-term Ambition">
         <span class="form-group__label">Short Term | 50 XP</span>
       </label>
     </div>
@@ -20,7 +19,6 @@ export const createDialogAmbitions = (
     <div class="form-group">
       <label for="long-term">
         <input type="radio" id="long-term" name="xp" value="500">
-        <input type="hidden" id="long-term-reason" value="Long-term Ambition">
         <span class="form-group__label">Long Term | 500 XP</span>
       </label>
     </div>

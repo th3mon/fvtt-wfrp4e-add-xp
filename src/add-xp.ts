@@ -45,25 +45,11 @@ export const addXP = (selectedTokens: Token[]): void => {
     return parseInt(valueAsString) || defaults.XP;
   };
 
-  const mapXPToReasonID = (XP: number | null): string => {
-    // INFO: Prawdpodobnie mapowanie po XP === 50 nie jest dobry rowiazaniem.
-    // Jest to short term solution.
-    if (XP === 50) {
-      return 'short-term-reason';
-    }
-
-    if (XP === 500) {
-      return 'long-term-reason';
-    }
-
-    return 'reason';
-  };
-
   const XPInput: HTMLInputElement | null = getXPInput();
   const XP: number = getValue(XPInput);
-  const ID: string = mapXPToReasonID(XP);
 
-  const getReasonInput = (ID: string): HTMLInputElement | null => {
+  const getReasonInput = (): HTMLInputElement | null => {
+    const ID = 'reason';
     const reasonInput: HTMLInputElement = document.getElementById(
       ID,
     ) as HTMLInputElement;
@@ -72,11 +58,14 @@ export const addXP = (selectedTokens: Token[]): void => {
   };
 
   const getReason = (
-    reasonInput: HTMLInputElement | null,
     actor: Actor,
+    XP: number,
+    reasonInput: HTMLInputElement | null,
   ): string => {
     const ambitions: Ambitions = getPersonalAmbitions(actor);
 
+    // INFO: Get ambitions reason
+    // INFO: Propably mapping reason for ambitions based on XP is fragile
     if (hasAmbitions(ambitions)) {
       type AmbitionsTypes = {
         [key: number]: 'shortTerm' | 'longTerm';
@@ -89,6 +78,10 @@ export const addXP = (selectedTokens: Token[]): void => {
       const ambitionType: string = ambitionsTypes[XP];
 
       return ambitions[ambitionType] || defaults.reason;
+    } else if (XP === 50) {
+      return 'Short-term Ambition';
+    } else if (XP === 500) {
+      return 'Long-term Ambition';
     }
 
     return reasonInput?.value || defaults.reason;
@@ -96,7 +89,7 @@ export const addXP = (selectedTokens: Token[]): void => {
 
   // TODO: Add token types
   selectedTokens.forEach((token) => {
-    const reason = getReason(getReasonInput(ID), token.actor);
+    const reason = getReason(token.actor, XP, getReasonInput());
 
     token.actor?.awardExp(XP, reason);
   });
