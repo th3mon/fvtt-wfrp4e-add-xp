@@ -62,9 +62,7 @@ describe('addXP', () => {
           value: '',
         };
 
-        if (id === 'xp') {
-          element.value = '';
-        } else if (id === 'reason') {
+        if (id === 'xp' || id === 'reason') {
           element.value = '';
         }
 
@@ -99,13 +97,10 @@ describe('addXP', () => {
         const element = {
           value: '',
         };
-        const shortTermID = 'short-term-reason';
 
-        if (id === shortTermID) {
+        if (id === 'short-term-reason') {
           element.value = 'Short-term Ambition';
-        }
-
-        if (id !== shortTermID) {
+        } else {
           return null;
         }
 
@@ -152,13 +147,10 @@ describe('addXP', () => {
         const element = {
           value: '',
         };
-        const longTermID = 'long-term-reason';
 
-        if (id === longTermID) {
+        if (id === 'long-term-reason') {
           element.value = 'Long-term Ambition';
-        }
-
-        if (id !== longTermID) {
+        } else {
           return null;
         }
 
@@ -208,8 +200,6 @@ describe('addXP', () => {
 
         if (id === 'xp') {
           element.value = '50';
-        } else {
-          element.value = '';
         }
 
         return element as HTMLInputElement;
@@ -250,8 +240,6 @@ describe('addXP', () => {
 
           if (id === 'xp') {
             element.value = '50';
-          } else {
-            element.value = '';
           }
 
           return element as HTMLInputElement;
@@ -288,8 +276,6 @@ describe('addXP', () => {
 
           if (id === 'xp') {
             element.value = '50';
-          } else {
-            element.value = '';
           }
 
           return element as HTMLInputElement;
