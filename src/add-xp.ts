@@ -23,6 +23,33 @@ export const getPersonalAmbitions = (actor: Actor): Ambitions => {
   };
 };
 
+// INFO: Propably mapping reason for ambitions based on XP is fragile
+const getAmbitionsReason = (actor: Actor, XP: number) => {
+  const defaultAmbitions: {
+    [key: number]: string;
+  } = {
+    50: 'Short-term Ambition',
+    500: 'Long-term Ambition',
+  };
+
+  const ambitions: Ambitions = getPersonalAmbitions(actor);
+
+  if (hasAmbitions(ambitions)) {
+    const ambitionsTypes: {
+      [key: number]: string;
+    } = {
+      50: 'shortTerm',
+      500: 'longTerm',
+    };
+
+    const ambitionType: string = ambitionsTypes[XP];
+
+    return ambitions[ambitionType];
+  }
+
+  return defaultAmbitions[XP];
+};
+
 export const addXP = (selectedTokens: Token[]): void => {
   const defaults = {
     XP: 20,
@@ -61,31 +88,8 @@ export const addXP = (selectedTokens: Token[]): void => {
     actor: Actor,
     XP: number,
     reasonInput: HTMLInputElement | null,
-  ): string => {
-    const ambitions: Ambitions = getPersonalAmbitions(actor);
-
-    // INFO: Get ambitions reason
-    // INFO: Propably mapping reason for ambitions based on XP is fragile
-    if (hasAmbitions(ambitions)) {
-      type AmbitionsTypes = {
-        [key: number]: 'shortTerm' | 'longTerm';
-      };
-      const ambitionsTypes: AmbitionsTypes = {
-        50: 'shortTerm',
-        500: 'longTerm',
-      };
-
-      const ambitionType: string = ambitionsTypes[XP];
-
-      return ambitions[ambitionType] || defaults.reason;
-    } else if (XP === 50) {
-      return 'Short-term Ambition';
-    } else if (XP === 500) {
-      return 'Long-term Ambition';
-    }
-
-    return reasonInput?.value || defaults.reason;
-  };
+  ): string =>
+    getAmbitionsReason(actor, XP) || reasonInput?.value || defaults.reason;
 
   // TODO: Add token types
   selectedTokens.forEach((token) => {
