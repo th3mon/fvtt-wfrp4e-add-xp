@@ -3,7 +3,7 @@ import { createDialogAddXP } from './create-dialog-add-xp';
 import { createDialogAmbitions } from './create-dialog-ambitions';
 import { getSelectedTokens } from './get-selected-tokens';
 
-type XPType = 'ambitions' | 'ad-hoc';
+export type XPType = 'ambitions' | 'ad-hoc';
 
 export enum AddXPType {
   Ambitions = 'ambitions',
@@ -34,7 +34,7 @@ export async function main(addXPFor: XPType) {
 
 // TODO: Move showDialogAdHoc() to the own file
 async function showDialogAdHoc(selectedTokens: Token[]) {
-  const addXPCallback = () => addXP(selectedTokens);
+  const addXPCallback = () => addXP(selectedTokens, 'ad-hoc');
   const cancelCallback = () => {};
   const dialog = createDialogAddXP(addXPCallback, cancelCallback);
 
@@ -43,7 +43,7 @@ async function showDialogAdHoc(selectedTokens: Token[]) {
 
 // TODO: Move showDialogAmbitions() to the own file
 async function showDialogAmbitions(selectedTokens: Token[]) {
-  const addXPCallback = () => addXP(selectedTokens);
+  const addXPCallback = () => addXP(selectedTokens, 'ambitions');
   const cancelCallback = () => {};
   const dialog = createDialogAmbitions(addXPCallback, cancelCallback);
 

@@ -51,7 +51,7 @@ describe('addXP', () => {
     } as Token;
     const selectedPlayers: Token[] = [token];
 
-    addXP(selectedPlayers);
+    addXP(selectedPlayers, 'ad-hoc');
   });
 
   it('add XP to one player using default values', () => {
@@ -87,7 +87,7 @@ describe('addXP', () => {
     } as Token;
     const selectedPlayers: Token[] = [token];
 
-    addXP(selectedPlayers);
+    addXP(selectedPlayers, 'ad-hoc');
   });
 
   it('add short-term Ambition XP to one player', () => {
@@ -125,7 +125,7 @@ describe('addXP', () => {
     } as Token;
     const selectedPlayers: Token[] = [token];
 
-    addXP(selectedPlayers);
+    addXP(selectedPlayers, 'ambitions');
   });
 
   it('add long-term Ambition XP to one player', () => {
@@ -163,7 +163,7 @@ describe('addXP', () => {
     } as Token;
     const selectedPlayers: Token[] = [token];
 
-    addXP(selectedPlayers);
+    addXP(selectedPlayers, 'ambitions');
   });
 
   it('use personal ambition as short term reason from the character sheet', () => {
@@ -202,7 +202,7 @@ describe('addXP', () => {
     } as Token;
     const selectedPlayers: Token[] = [token];
 
-    addXP(selectedPlayers);
+    addXP(selectedPlayers, 'ambitions');
   });
 
   describe('hasAmbitions', () => {

@@ -1,6 +1,9 @@
 // actor.details['personal-ambitions']['short-term']
 // actor.details['personal-ambitions']['long-term']
 // actor.details['party-ambitions']['short-term']
+
+import { AddXPType, XPType } from './main';
+
 // actor.details['party-ambitions']['long-term']
 export type Ambitions = {
   shortTerm: string;
@@ -23,8 +26,11 @@ export const getPersonalAmbitions = (actor: Actor): Ambitions => {
   };
 };
 
-// INFO: Propably mapping reason for ambitions based on XP is fragile
-const getAmbitionsReason = (actor: Actor, XP: number) => {
+const getAmbitionsReason = (actor: Actor, XP: number, addXPFor: XPType) => {
+  if (addXPFor !== 'ambitions') {
+    return null;
+  }
+
   const defaultAmbitions: {
     [key: number]: string;
   } = {
@@ -50,7 +56,7 @@ const getAmbitionsReason = (actor: Actor, XP: number) => {
   return defaultAmbitions[XP];
 };
 
-export const addXP = (selectedTokens: Token[]): void => {
+export const addXP = (selectedTokens: Token[], addXPFor: XPType): void => {
   const defaults = {
     XP: 20,
     reason: game.i18n.localize('wfrp4e.add-xp.modal.value.defaults.reason'),
@@ -89,7 +95,9 @@ export const addXP = (selectedTokens: Token[]): void => {
     XP: number,
     reasonInput: HTMLInputElement | null,
   ): string =>
-    getAmbitionsReason(actor, XP) || reasonInput?.value || defaults.reason;
+    getAmbitionsReason(actor, XP, addXPFor) ||
+    reasonInput?.value ||
+    defaults.reason;
 
   // TODO: Add token types
   selectedTokens.forEach((token) => {
