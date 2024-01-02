@@ -26,9 +26,13 @@ export const getPersonalAmbitions = (actor: Actor): Ambitions => {
   };
 };
 
-const getAmbitionsReason = (actor: Actor, XP: number, addXPFor: XPType) => {
+const getAmbitionsReason = (
+  actor: Actor,
+  XP: number,
+  addXPFor: XPType,
+): string => {
   if (addXPFor !== 'ambitions') {
-    return null;
+    return '';
   }
 
   const defaultAmbitions: {
