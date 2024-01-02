@@ -1,29 +1,29 @@
-// actor.details['personal-ambitions']['short-term']
-// actor.details['personal-ambitions']['long-term']
-// actor.details['party-ambitions']['short-term']
-
+import { Ambitions, getAmbitions } from './ambitions/get-ambitions';
 import { AddXPType, XPType } from './main';
 
-// actor.details['party-ambitions']['long-term']
-export type Ambitions = {
-  shortTerm: string;
-  longTerm: string;
-  [key: string]: string;
+export const hasAmbitions = (ambitions: Ambitions[]): boolean => {
+  const ambitionsOrEmptyValue: Ambitions | undefined = Array.from(
+    ambitions,
+  ).find((a: Ambitions) => a.shortTerm || a.longTerm);
+
+  return Boolean(ambitionsOrEmptyValue);
 };
 
-export const hasAmbitions = (ambitions: Ambitions): boolean => {
-  return Boolean(ambitions.shortTerm) || Boolean(ambitions.longTerm);
-};
+const getPersonalOrPartyAmbitions = (): 0 | 1 => {
+  const selector = '.form-group input[type="radio"]:checked';
+  const element: HTMLSpanElement = document.querySelector(
+    selector,
+  ) as HTMLSpanElement;
+  const ambitionType = element?.dataset.ambitionType;
 
-export const getPersonalAmbitions = (actor: Actor): Ambitions => {
-  return {
-    shortTerm:
-      actor.details['personal-ambitions'] &&
-      actor.details['personal-ambitions']['short-term'],
-    longTerm:
-      actor.details['personal-ambitions'] &&
-      actor.details['personal-ambitions']['long-term'],
-  };
+  switch (ambitionType) {
+    case 'personal':
+      return 0;
+    case 'party':
+      return 1;
+    default:
+      return 0;
+  }
 };
 
 const getAmbitionsReason = (
@@ -31,6 +31,8 @@ const getAmbitionsReason = (
   XP: number,
   addXPFor: XPType,
 ): string => {
+  const personalOrPartyAmbitions: 0 | 1 = getPersonalOrPartyAmbitions();
+
   if (addXPFor !== 'ambitions') {
     return '';
   }
@@ -42,7 +44,7 @@ const getAmbitionsReason = (
     500: 'Long-term Ambition',
   };
 
-  const ambitions: Ambitions = getPersonalAmbitions(actor);
+  const ambitions: Ambitions[] = getAmbitions(actor);
 
   if (hasAmbitions(ambitions)) {
     const ambitionsTypes: {
@@ -54,7 +56,7 @@ const getAmbitionsReason = (
 
     const ambitionType: string = ambitionsTypes[XP];
 
-    return ambitions[ambitionType];
+    return ambitions[personalOrPartyAmbitions][ambitionType];
   }
 
   return defaultAmbitions[XP];

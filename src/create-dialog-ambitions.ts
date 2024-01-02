@@ -11,15 +11,29 @@ export const createDialogAmbitions = (
   const content = `
     <div class="form-group">
       <label for="short-term">
-        <input type="radio" id="short-term" name="xp" value="50" checked>
-        <span class="form-group__label">Short Term | 50 XP</span>
+        <input type="radio" id="personal-short-term-ambition" name="xp" value="50" checked data-ambition-type="personal">
+        <span class="form-group__label">Personal Short Term Ambition | 50 XP</span>
       </label>
     </div>
 
     <div class="form-group">
       <label for="long-term">
-        <input type="radio" id="long-term" name="xp" value="500">
-        <span class="form-group__label">Long Term | 500 XP</span>
+        <input type="radio" id="personal-long-term-ambition" name="xp" value="500" data-ambition-type="personal">
+        <span class="form-group__label">Personal Long Term Ambition | 500 XP</span>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="short-term">
+        <input type="radio" id="party-short-term-ambition" name="xp" value="50" data-ambition-type="party">
+        <span class="form-group__label">Party Short Term Ambition | 50 XP</span>
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label for="long-term">
+        <input type="radio" id="party-long-term-ambition" name="xp" value="500" data-ambition-type="party">
+        <span class="form-group__label">Party Long Term Ambition | 500 XP</span>
       </label>
     </div>
   `;

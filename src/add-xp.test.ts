@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll } from 'vitest';
-import { addXP, getPersonalAmbitions, hasAmbitions } from './add-xp';
+import { addXP } from './add-xp';
 
 describe('addXP', () => {
   beforeAll(() => {
@@ -32,6 +32,8 @@ describe('addXP', () => {
 
         return element as HTMLInputElement;
       },
+
+      querySelector: () => null,
     };
 
     // @ts-expect-error type
@@ -68,6 +70,8 @@ describe('addXP', () => {
 
         return element as HTMLInputElement;
       },
+
+      querySelector: () => null,
     };
 
     // @ts-expect-error type
@@ -98,13 +102,20 @@ describe('addXP', () => {
       querySelector: (selector: string) => {
         const element = {
           value: '',
+          dataset: {
+            ambitionType: 'personal',
+          },
         };
 
         if (selector === 'input[name="xp"]:checked') {
           element.value = '50';
+
+          // @ts-expect-error type
+          return element as HTMLInputElement;
         }
 
-        return element as HTMLInputElement;
+        // @ts-expect-error type
+        return element as HTMLSpanElement;
       },
     };
 
@@ -136,13 +147,20 @@ describe('addXP', () => {
       querySelector: (selector: string) => {
         const element = {
           value: '',
+          dataset: {
+            ambitionType: 'personal',
+          },
         };
 
         if (selector === 'input[name="xp"]:checked') {
           element.value = '500';
+
+          // @ts-expect-error type
+          return element as HTMLInputElement;
         }
 
-        return element as HTMLInputElement;
+        // @ts-expect-error type
+        return element as HTMLSpanElement;
       },
     };
 
@@ -180,6 +198,18 @@ describe('addXP', () => {
 
         return element as HTMLInputElement;
       },
+
+      querySelector: () => {
+        const element = {
+          value: '',
+          dataset: {
+            ambitionType: 'personal',
+          },
+        };
+
+        // @ts-expect-error type
+        return element as HTMLSpanElement;
+      },
     };
 
     // @ts-expect-error type
@@ -203,76 +233,5 @@ describe('addXP', () => {
     const selectedPlayers: Token[] = [token];
 
     addXP(selectedPlayers, 'ambitions');
-  });
-
-  describe('hasAmbitions', () => {
-    it('should return true if the actor has personal ambitions', () => {
-      // @ts-expect-error type
-      globalThis.document = {
-        getElementById: (id: string) => {
-          const element = {
-            value: '',
-          };
-
-          if (id === 'xp') {
-            element.value = '50';
-          }
-
-          return element as HTMLInputElement;
-        },
-      };
-
-      // @ts-expect-error type
-      const selectedPlayer: Token = {
-        actor: {
-          details: {
-            experience: {
-              current: 100,
-              total: 200,
-            },
-            ['personal-ambitions']: {
-              ['short-term']: 'Quest A',
-            },
-          },
-        },
-      } as Token;
-
-      const ambitions = getPersonalAmbitions(selectedPlayer?.actor);
-
-      expect(hasAmbitions(ambitions)).toBe(true);
-    });
-
-    it('should return false if the actor does not have personal ambitions', () => {
-      // @ts-expect-error type
-      globalThis.document = {
-        getElementById: (id: string) => {
-          const element = {
-            value: '',
-          };
-
-          if (id === 'xp') {
-            element.value = '50';
-          }
-
-          return element as HTMLInputElement;
-        },
-      };
-
-      // @ts-expect-error type
-      const selectedPlayer: Token = {
-        actor: {
-          details: {
-            experience: {
-              current: 100,
-              total: 200,
-            },
-          },
-        },
-      } as Token;
-
-      const ambitions = getPersonalAmbitions(selectedPlayer?.actor);
-
-      expect(hasAmbitions(ambitions)).toBe(false);
-    });
   });
 });
