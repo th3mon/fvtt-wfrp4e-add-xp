@@ -4,7 +4,6 @@ import { hasAmbitions } from '../add-xp';
 
 describe('hasAmbitions', () => {
   it('should return true if the actor has personal ambitions', () => {
-    // @ts-expect-error type
     globalThis.document = {
       getElementById: (id: string) => {
         const element = {
@@ -17,10 +16,9 @@ describe('hasAmbitions', () => {
 
         return element as HTMLInputElement;
       },
-    };
+    } as unknown as Document;
 
-    // @ts-expect-error type
-    const selectedPlayer: Token = {
+    const selectedPlayer: Prettify<Token> = {
       actor: {
         details: {
           experience: {
@@ -32,15 +30,18 @@ describe('hasAmbitions', () => {
           },
         },
       },
-    } as Token;
+    } as unknown as Token;
 
-    const ambitions: Ambitions[] = getAmbitions(selectedPlayer?.actor);
+    const actor = selectedPlayer!.actor;
 
-    expect(hasAmbitions(ambitions)).toBe(true);
+    if (actor) {
+      const ambitions: Ambitions[] = getAmbitions(actor);
+
+      expect(hasAmbitions(ambitions)).toBe(true);
+    }
   });
 
   it('should return false if the actor does not have personal ambitions', () => {
-    // @ts-expect-error type
     globalThis.document = {
       getElementById: (id: string) => {
         const element = {
@@ -53,9 +54,8 @@ describe('hasAmbitions', () => {
 
         return element as HTMLInputElement;
       },
-    };
+    } as unknown as Document;
 
-    // @ts-expect-error type
     const selectedPlayer: Token = {
       actor: {
         details: {
@@ -65,10 +65,14 @@ describe('hasAmbitions', () => {
           },
         },
       },
-    } as Token;
+    } as unknown as Token;
 
-    const ambitions = getAmbitions(selectedPlayer?.actor);
+    const actor = selectedPlayer!.actor;
 
-    expect(hasAmbitions(ambitions)).toBe(false);
+    if (actor) {
+      const ambitions: Ambitions[] = getAmbitions(actor);
+
+      expect(hasAmbitions(ambitions)).toBe(false);
+    }
   });
 });
