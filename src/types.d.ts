@@ -1,8 +1,6 @@
 declare global {
   interface Game {
-    i18n: {
-      localize(key: string): string;
-    };
+    i18n: Localization;
   }
 
   interface Actor {
@@ -11,31 +9,10 @@ declare global {
 
   var game: Game;
 
-  interface Token {
-    actor?: Actor;
-  }
+  type DialogCtor = { new (...args: any[]): any };
 
-  interface Canvas {
-    tokens?: {
-      controlled: Token[];
-    };
-  }
-
-  interface Dialog {
-    new (options: {
-      title: string;
-      content: string;
-      buttons: Record<
-        string,
-        {
-          icon: string;
-          label: string;
-          callback: () => void;
-        }
-      >;
-      default: string;
-    }): Dialog;
-  }
+  var Dialog: DialogCtor;
+  var dialog: DialogCtor;
 
   interface Window {
     wfrpAddXp: unknown;

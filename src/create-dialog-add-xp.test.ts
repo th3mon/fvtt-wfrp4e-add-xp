@@ -3,16 +3,15 @@ import { createDialogAddXP } from './create-dialog-add-xp';
 
 describe('createDialogAddXP', () => {
   beforeAll(() => {
-    class Dialog {}
-    const i18n = {
-      localize: (key: string) => key,
-    };
-    // @ts-expect-error type
-    globalThis.Dialog = Dialog;
-    // @ts-expect-error type
-    globalThis.game = {
-      i18n,
-    };
+    const game = {
+      i18n: {
+        localize: (key: string) => key,
+      },
+    } as unknown as Game;
+
+    globalThis.dialog = Dialog;
+
+    globalThis.game = game;
   });
 
   it('should exist', () => {
@@ -24,7 +23,6 @@ describe('createDialogAddXP', () => {
     const cancel = () => {};
     const dialog = createDialogAddXP(add, cancel);
 
-    // @ts-expect-error type
-    expect(dialog instanceof globalThis.Dialog).toBe(true);
+    expect(dialog instanceof globalThis.dialog).toBe(true);
   });
 });
