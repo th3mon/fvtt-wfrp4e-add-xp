@@ -3,13 +3,13 @@ import { addXP } from './add-xp';
 
 describe('addXP', () => {
   beforeAll(() => {
-    const i18n = {
-      localize: (_: string) => 'Just gaining some XP',
-    };
-    // @ts-expect-error type
-    globalThis.game = {
-      i18n,
-    };
+    const game = {
+      i18n: {
+        localize: (_: string) => 'Just gaining some XP',
+      },
+    } as unknown as Game;
+
+    globalThis.game = game;
   });
 
   it('should exist', () => {

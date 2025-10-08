@@ -1,20 +1,7 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { createDialogAddXP } from './create-dialog-add-xp';
 
 describe('createDialogAddXP', () => {
-  beforeAll(() => {
-    class Dialog {}
-    const i18n = {
-      localize: (key: string) => key,
-    };
-    // @ts-expect-error type
-    globalThis.Dialog = Dialog;
-    // @ts-expect-error type
-    globalThis.game = {
-      i18n,
-    };
-  });
-
   it('should exist', () => {
     expect(createDialogAddXP).toBeDefined();
   });
@@ -24,7 +11,6 @@ describe('createDialogAddXP', () => {
     const cancel = () => {};
     const dialog = createDialogAddXP(add, cancel);
 
-    // @ts-expect-error type
-    expect(dialog instanceof globalThis.Dialog).toBe(true);
+    expect(dialog instanceof globalThis.dialog).toBe(true);
   });
 });

@@ -16,6 +16,7 @@ const config: UserConfig = {
       },
     },
   },
+
   build: {
     outDir: path.resolve(__dirname, 'dist'),
     emptyOutDir: true,
@@ -26,6 +27,13 @@ const config: UserConfig = {
       formats: ['es'],
       fileName: 'fvtt-wfrp4e-add-xp',
     },
+  },
+
+  test: {
+    environment: 'node',
+    setupFiles: ['../test/setup.ts'],
+    include: ['**/*.test.ts'],
+    clearMocks: true,
   },
 };
 
