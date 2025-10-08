@@ -1,10 +1,14 @@
+interface Wfrp4eActorSystem {
+  awardExp(xp: number, reason: string): void;
+}
+
 declare global {
   interface Game {
     i18n: Localization;
   }
 
   interface Actor {
-    awardExp(xp: number, reason: string): void;
+    system: Wfrp4eActorSystem;
   }
 
   var game: Game;
