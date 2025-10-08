@@ -5,17 +5,17 @@ export const addXP = (selectedTokens: Token[]): void => {
   };
 
   const XPInput: HTMLInputElement = document.getElementById(
-    'xp'
+    'xp',
   ) as HTMLInputElement;
   const XP = parseInt(XPInput?.value) || defaults.XP;
 
   const reasonInput: HTMLInputElement = document.getElementById(
-    'reason'
+    'reason',
   ) as HTMLInputElement;
   const reason = reasonInput?.value || defaults.reason;
 
   // TODO: Add token types
   selectedTokens.forEach((token) => {
-    token.actor?.awardExp(XP, reason);
+    token.actor?.system?.awardExp(XP, reason);
   });
 };

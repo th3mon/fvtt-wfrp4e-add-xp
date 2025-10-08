@@ -3,13 +3,13 @@ import { getSelectedTokens } from './get-selected-tokens';
 
 describe('getTokens', () => {
   beforeAll(() => {
-    const i18n = {
-      localize: (key: string) => key,
-    };
-    // @ts-expect-error type
-    globalThis.game = {
-      i18n,
-    };
+    const game = {
+      i18n: {
+        localize: (key: string) => key,
+      },
+    } as unknown as Game;
+
+    globalThis.game = game;
   });
 
   it('should exist', () => {
@@ -37,7 +37,7 @@ describe('getTokens', () => {
     const canvasWithoutControlledTokens = {};
 
     const { errorMessage } = getSelectedTokens(
-      canvasWithoutControlledTokens as Canvas
+      canvasWithoutControlledTokens as Canvas,
     );
 
     expect(errorMessage).toBeDefined();

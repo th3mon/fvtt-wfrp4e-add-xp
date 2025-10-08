@@ -1,6 +1,6 @@
 {
   "name": "fvtt-wfrp4e-add-xp",
-  "version": "1.0.4",
+  "version": "1.0.3",
   "description": "Utility for WFRP4e GM",
   "main": "index.js",
   "scripts": {
@@ -18,8 +18,8 @@
   "license": "MIT License",
   "type": "module",
   "devDependencies": {
-    "@league-of-foundry-developers/foundry-vtt-types": "^9.280.0",
     "concurrently": "^8.2.0",
+    "fvtt-types": "github:League-of-Foundry-Developers/foundry-vtt-types#main",
     "jest": "^29.6.2",
     "sass": "^1.65.1",
     "typescript": "^5.0.2",
