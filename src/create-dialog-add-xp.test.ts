@@ -1,19 +1,7 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { createDialogAddXP } from './create-dialog-add-xp';
 
 describe('createDialogAddXP', () => {
-  beforeAll(() => {
-    const game = {
-      i18n: {
-        localize: (key: string) => key,
-      },
-    } as unknown as Game;
-
-    globalThis.dialog = Dialog;
-
-    globalThis.game = game;
-  });
-
   it('should exist', () => {
     expect(createDialogAddXP).toBeDefined();
   });
